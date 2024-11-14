@@ -1,0 +1,9 @@
+import ldap3
+server=ldap3.Server(’IP’, get_info=ldap3.ALL,port=389)
+connection=ldap3.Connection(server)
+connection.bind()
+server.info
+connection.search(search_base='DC=algo,DC=com',search_filter='(&(objectclass=*))',search_scope='SUBTREE', attributes='*')
+connection.entries
+connection.search(search_base='DC=algo,DC=com',search_filter='(&(objectclass=person))',search_scope='SUBTREE', attributes='userpassword')
+connection.entries
